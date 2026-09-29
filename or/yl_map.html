@@ -41725,14 +41725,15 @@
         const marker = L.marker([item.mapLatitude, item.mapLongitude], { icon: markerIcon });
         
         // Custom Tooltip format requested
-        const info = `${orderNumber}: ${item.latestCallName} - (Price: ${item.priceRangeId}) - review: ${item.reviewCount}\n
+        const info1 = `${orderNumber}: ${item.latestCallName} - (Price: ${item.priceRangeId}) - ☺️:${item.scoreSmile} - ${item.categories.join(", ")`;
+        const info2 = `${orderNumber}: ${item.latestCallName} - (Price: ${item.priceRangeId}) - review: ${item.reviewCount}\n
                       bookmarked: ${item.bookmarkedUserCount} - ☺️:${item.scoreSmile} - ${item.categories.join(", ")}\n
-                      photos:${item.photos.join(", ")}`;
-        marker.bindTooltip(info, { direction: 'top', offset: [0, -10] });
+                      photos:${item.photos.join(",\n")}`;
+        marker.bindTooltip(info1, { direction: 'top', offset: [0, -10] });
 
         // Marker Click Event to show Custom Message Box
         marker.on('click', () => {
-          modalMessageText.innerText = info;
+          modalMessageText.innerText = info2;
           pendingUrl = item.shortenUrl || null;
           
           // Disable/Hide OK if no URL is present
