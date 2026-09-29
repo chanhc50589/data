@@ -41684,7 +41684,7 @@
         targetTypes = typeQuery.split(/[\s,]+/).map(Number).filter(n => !isNaN(n));
       }
       return data.filter(item => {
-        const nameDesc = (item.latestCallName + " " + item.categories.join("")).toLowerCase();
+        const nameDesc = (item.latestCallName + " " + item.categories.join("") + " " + item.photos.join(" ")).toLowerCase();
 
         // Include check (if text entered, must match)
         const matchesInclude = includeQuery === '' || nameDesc.includes(includeQuery);
@@ -41725,12 +41725,14 @@
         const marker = L.marker([item.mapLatitude, item.mapLongitude], { icon: markerIcon });
         
         // Custom Tooltip format requested
-        const info = `${orderNumber}: ${item.latestCallName} - (Price: ${item.priceRangeId})`;
+        const info = `${orderNumber}: ${item.latestCallName} - (Price: ${item.priceRangeId}) - review: ${item.reviewCount}\n
+                      bookmarked: ${item.bookmarkedUserCount} - ☺️:${item.scoreSmile} - ${item.categories.join(", ")}\n
+                      photos:${item.photos.join(", ")}`;
         marker.bindTooltip(info, { direction: 'top', offset: [0, -10] });
 
         // Marker Click Event to show Custom Message Box
         marker.on('click', () => {
-          modalMessageText.textContent = info;
+          modalMessageText.innerText = info;
           pendingUrl = item.shortenUrl || null;
           
           // Disable/Hide OK if no URL is present
