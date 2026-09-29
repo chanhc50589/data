@@ -41725,7 +41725,7 @@
         const marker = L.marker([item.mapLatitude, item.mapLongitude], { icon: markerIcon });
         
         // Custom Tooltip format requested
-        const info1 = `${orderNumber}: ${item.latestCallName} - (Price: ${item.priceRangeId}) - ☺️:${item.scoreSmile} - ${item.categories.join(", ")`;
+        const info1 = `${orderNumber}: ${item.latestCallName} - (Price: ${item.priceRangeId}) - ☺️:${item.scoreSmile} - ${item.categories.join(", ")}`;
         const info2 = `${orderNumber}: ${item.latestCallName} - (Price: ${item.priceRangeId}) - review: ${item.reviewCount}\n
                       bookmarked: ${item.bookmarkedUserCount} - ☺️:${item.scoreSmile} - ${item.categories.join(", ")}\n
                       photos:${item.photos.join(",\n")}`;
