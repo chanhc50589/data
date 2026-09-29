@@ -41684,7 +41684,7 @@
         targetTypes = typeQuery.split(/[\s,]+/).map(Number).filter(n => !isNaN(n));
       }
       return data.filter(item => {
-        const nameDesc = (item.latestCallName + " " + item.categories.join("") + " " + item.photos.join(" ")).toLowerCase();
+        const nameDesc = ( item.latestCallName + " " + item.categories.join("") + " " + (item.photos ? item.photos.join(" ") : "") ).toLowerCase();
 
         // Include check (if text entered, must match)
         const matchesInclude = includeQuery === '' || nameDesc.includes(includeQuery);
